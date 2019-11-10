@@ -1,9 +1,9 @@
-package dev.dnights.circularviewpager
+package dev.dnights.circularviewpager.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import dev.dnights.circularviewpager.R
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
