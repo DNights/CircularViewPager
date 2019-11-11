@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-   <androidx.viewpager.widget.ViewPager
+   <dev.dnights.circularviewpager.viewpager.CircularViewPager
        android:id="@+id/mainViewPager"
        android:layout_width="match_parent"
-       android:layout_height="match_parent"/>
+       android:layout_height="match_parent"
+       app:pageCount="10"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
