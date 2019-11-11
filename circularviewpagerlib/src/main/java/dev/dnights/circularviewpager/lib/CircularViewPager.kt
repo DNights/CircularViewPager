@@ -1,4 +1,4 @@
-package dev.dnights.circularviewpager.viewpager
+package dev.dnights.circularviewpager.lib
 
 import android.content.Context
 import android.util.AttributeSet

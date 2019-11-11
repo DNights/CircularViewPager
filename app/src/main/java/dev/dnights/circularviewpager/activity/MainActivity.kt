@@ -7,7 +7,7 @@ import com.dnights.restfullapisampletest.api.API
 import com.dnights.restfullapisampletest.api.AccessKey
 import com.dnights.restfullapisampletest.api.data.PhotoData
 import dev.dnights.circularviewpager.R
-import dev.dnights.circularviewpager.viewpager.CircularViewPager
+import dev.dnights.circularviewpager.lib.CircularViewPager
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*

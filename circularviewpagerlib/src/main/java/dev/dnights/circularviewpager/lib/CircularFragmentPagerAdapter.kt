@@ -1,4 +1,4 @@
-package dev.dnights.circularviewpager.viewpager
+package dev.dnights.circularviewpager.lib
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

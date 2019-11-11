@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-   <dev.dnights.circularviewpager.viewpager.CircularViewPager
+   <dev.dnights.circularviewpager.lib.CircularViewPager
        android:id="@+id/mainViewPager"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
