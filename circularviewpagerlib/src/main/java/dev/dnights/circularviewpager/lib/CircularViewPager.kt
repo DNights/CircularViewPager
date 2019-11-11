@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.PagerAdapter
 
 
-class CircularViewPager @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
+open class CircularViewPager @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
     ViewPager(context, attrs) {
     private val mListener: CircularViewPagerListener
     private var mPageCount: Int = 0
