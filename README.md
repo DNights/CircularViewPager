@@ -20,7 +20,7 @@ allprojects {
 And add next dependencies in the build.gradle of the module:
 ```gradle
 dependencies {
-    implementation 'com.github.DNights:CircularViewPager:0.0.1'
+    implementation 'com.github.DNights:CircularViewPager:0.0.2'
 }
 ```
 
