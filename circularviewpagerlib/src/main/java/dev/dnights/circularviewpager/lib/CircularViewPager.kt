@@ -7,7 +7,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.PagerAdapter
-import dev.dnights.circularviewpager.R
 
 
 class CircularViewPager @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
