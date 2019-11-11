@@ -1,5 +1,5 @@
-[![Release](https://jitpack.io/v/dnights.svg)]
-(https://jitpack.io/#DNights)
+[![](https://jitpack.io/v/DNights/CircularViewPager.svg)]
+(https://jitpack.io/#DNights/CircularViewPager)
 
 
 # CircularViewPager
