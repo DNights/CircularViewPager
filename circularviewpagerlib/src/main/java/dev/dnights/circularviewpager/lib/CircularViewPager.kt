@@ -11,26 +11,34 @@ import androidx.viewpager.widget.PagerAdapter
 
 open class CircularViewPager @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
     ViewPager(context, attrs) {
-    private val mListener: CircularViewPagerListener
-    private var mPageCount: Int = 0
+    private val listener: CircularViewPagerListener by lazy {
+        CircularViewPagerListener()
+    }
+
+    var pageCount: Int = 0
+        set(value) {
+            field = value
+        }
+        get() = field
 
     init {
         getAttributes(attrs)
-        mListener = CircularViewPagerListener()
         overScrollMode = View.OVER_SCROLL_NEVER
         offscreenPageLimit = 1
     }
 
     private fun getAttributes(attrs: AttributeSet?) {
-        val a = context.theme.obtainStyledAttributes(
-            attrs, R.styleable.CircularViewPager, 0, 0
-        )
-        mPageCount = a.getInteger(R.styleable.CircularViewPager_pageCount, 0)
-        a.recycle()
+        val typesArray = context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.CircularViewPager,
+            0,
+            0)
+        pageCount = typesArray.getInteger(R.styleable.CircularViewPager_pageCount, 0)
+        typesArray.recycle()
     }
 
     fun setFragmentPagerAdapter(manager: FragmentManager, listener: GetFragmentItemListener) {
-        val adapter = object : CircularFragmentPagerAdapter(manager, mPageCount) {
+        val adapter = object : CircularFragmentPagerAdapter(manager, pageCount) {
             override fun getFragment(position: Int): Fragment {
                 return listener.getFragment(position)
             }
@@ -39,7 +47,7 @@ open class CircularViewPager @JvmOverloads constructor(context: Context, attrs: 
     }
 
     fun setLayoutPagerAdapter(listener: GetLayoutItemListener) {
-        val adapter = object : LayoutPagerAdapter(mPageCount) {
+        val adapter = object : LayoutPagerAdapter(pageCount) {
             override fun setItemView(rootView: View, position: Int) {
                 listener.setItemView(rootView, position)
             }
@@ -51,13 +59,9 @@ open class CircularViewPager @JvmOverloads constructor(context: Context, attrs: 
         setAdapter(adapter)
     }
 
-    fun setPageCount(count: Int) {
-        mPageCount = count
-    }
-
     override fun setAdapter(adapter: PagerAdapter?) {
         super.setAdapter(adapter)
-        addOnPageChangeListener(mListener)
+        addOnPageChangeListener(listener)
         currentItem = 1
     }
 
