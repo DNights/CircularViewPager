@@ -1,5 +1,4 @@
-[![](https://jitpack.io/v/DNights/CircularViewPager.svg)]
-(https://jitpack.io/#DNights/CircularViewPager)
+[![](https://jitpack.io/v/DNights/CircularViewPager.svg)](https://jitpack.io/#DNights/CircularViewPager)
 
 
 # CircularViewPager
