@@ -94,16 +94,12 @@ open class CircularViewPager
 
         override fun onPageScrollStateChanged(state: Int) {
             if (state == SCROLL_STATE_IDLE) {
-                loopCurrentItem(curPosition)
-            }
-        }
-
-        private fun loopCurrentItem(position: Int) {
-            val pageCount = adapter!!.count
-            if (position == pageCount - 1) {
-                setCurrentItem(1, false)
-            } else if (position == 0) {
-                setCurrentItem(pageCount - 2, false)
+                val pageCount = adapter!!.count
+                if (curPosition == pageCount - 1) {
+                    setCurrentItem(1, false)
+                } else if (curPosition == 0) {
+                    setCurrentItem(pageCount - 2, false)
+                }
             }
         }
 
