@@ -15,13 +15,11 @@ open class CircularViewPager
         CircularViewPagerListener()
     }
 
-    private var pagerAdapter : PagerAdapter? = null
-
     var pageCount: Int = 0
         set(value) {
             field = value
-            if(pagerAdapter != null && pagerAdapter is LayoutPagerAdapter){
-                (pagerAdapter as LayoutPagerAdapter).setPageListCount(value)
+            if(adapter != null && adapter is LayoutPagerAdapter){
+                (adapter as LayoutPagerAdapter).setPageListCount(value)
             }
         }
         get() = field
@@ -49,7 +47,6 @@ open class CircularViewPager
             }
         }
         setAdapter(adapter)
-        pagerAdapter = adapter
     }
 
     fun setLayoutPagerAdapter(listener: GetLayoutItemListener) {
@@ -63,7 +60,6 @@ open class CircularViewPager
             }
         }
         setAdapter(adapter)
-        pagerAdapter = adapter
     }
 
     override fun setAdapter(adapter: PagerAdapter?) {
