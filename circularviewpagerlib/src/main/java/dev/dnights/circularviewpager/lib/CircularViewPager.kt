@@ -8,16 +8,21 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.PagerAdapter
 
+open class CircularViewPager
+@JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : ViewPager(context, attrs) {
 
-open class CircularViewPager @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
-    ViewPager(context, attrs) {
     private val listener: CircularViewPagerListener by lazy {
         CircularViewPagerListener()
     }
 
+    private var pagerAdapter : PagerAdapter? = null
+
     var pageCount: Int = 0
         set(value) {
             field = value
+            if(pagerAdapter != null && pagerAdapter is LayoutPagerAdapter){
+                (pagerAdapter as LayoutPagerAdapter).setPageListCount(value)
+            }
         }
         get() = field
 
@@ -44,6 +49,7 @@ open class CircularViewPager @JvmOverloads constructor(context: Context, attrs: 
             }
         }
         setAdapter(adapter)
+        pagerAdapter = adapter
     }
 
     fun setLayoutPagerAdapter(listener: GetLayoutItemListener) {
@@ -57,6 +63,7 @@ open class CircularViewPager @JvmOverloads constructor(context: Context, attrs: 
             }
         }
         setAdapter(adapter)
+        pagerAdapter = adapter
     }
 
     override fun setAdapter(adapter: PagerAdapter?) {
@@ -76,7 +83,7 @@ open class CircularViewPager @JvmOverloads constructor(context: Context, attrs: 
 
     private inner class CircularViewPagerListener : OnPageChangeListener {
 
-        private val DELAY = 200
+        private var curPosition = 0
 
         override fun onPageScrolled(
             position: Int,
@@ -86,10 +93,14 @@ open class CircularViewPager @JvmOverloads constructor(context: Context, attrs: 
         }
 
         override fun onPageSelected(position: Int) {
-            postDelayed({ loopCurrentItem(position) }, DELAY.toLong())
+            curPosition = position
         }
 
-        override fun onPageScrollStateChanged(state: Int) {}
+        override fun onPageScrollStateChanged(state: Int) {
+            if (state == SCROLL_STATE_IDLE) {
+                loopCurrentItem(curPosition)
+            }
+        }
 
         private fun loopCurrentItem(position: Int) {
             val pageCount = adapter!!.count

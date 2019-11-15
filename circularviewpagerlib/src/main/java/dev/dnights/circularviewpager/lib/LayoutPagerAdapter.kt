@@ -6,17 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.viewpager.widget.PagerAdapter
 
-
 abstract class LayoutPagerAdapter(count: Int) : PagerAdapter() {
-    private val mPageList: MutableList<Int>
+    private var mPageList: MutableList<Int> = ArrayList()
 
     init {
-        mPageList = ArrayList()
-        mPageList.add(count + 1)
-        for (index in 0 until count) {
-            mPageList.add(index + 1)
-        }
-        mPageList.add(0)
+        setPageListCount(count)
     }
 
     override fun getCount(): Int {
@@ -28,10 +22,10 @@ abstract class LayoutPagerAdapter(count: Int) : PagerAdapter() {
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val viewPosition = when(position) {
-            mPageList.size -1 -> 0
-            0 -> mPageList.size -3
-            else -> mPageList[position] -1
+        val viewPosition = when (position) {
+            mPageList.size - 1 -> 0
+            0 -> mPageList.size - 3
+            else -> mPageList[position] - 1
         }
         val layout = getLayout(viewPosition)
 
@@ -45,6 +39,15 @@ abstract class LayoutPagerAdapter(count: Int) : PagerAdapter() {
 
     override fun destroyItem(container: ViewGroup, position: Int, any: Any) {
         container.removeView(any as View)
+    }
+
+    fun setPageListCount(count : Int){
+        mPageList.clear()
+        mPageList.add(count + 1)
+        for (index in 0 until count) {
+            mPageList.add(index + 1)
+        }
+        mPageList.add(0)
     }
 
     protected abstract fun getLayout(position: Int): Int
