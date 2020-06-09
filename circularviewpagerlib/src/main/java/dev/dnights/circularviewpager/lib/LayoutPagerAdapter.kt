@@ -18,7 +18,7 @@ abstract class LayoutPagerAdapter(count: Int) : PagerAdapter() {
     }
 
     override fun isViewFromObject(view: View, any: Any): Boolean {
-        return view === any
+        return view == any
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {

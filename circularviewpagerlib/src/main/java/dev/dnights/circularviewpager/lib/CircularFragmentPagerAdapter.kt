@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 
 
 internal abstract class CircularFragmentPagerAdapter(fragmentManager: FragmentManager, count: Int) :
-    FragmentStatePagerAdapter(fragmentManager) {
+    FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     private val mPageList: MutableList<Int>
 
     init {
