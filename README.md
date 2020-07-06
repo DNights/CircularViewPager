@@ -22,8 +22,50 @@ allprojects {
 And add next dependencies in the build.gradle of the module:
 ```gradle
 dependencies {
-    implementation 'com.github.DNights:CircularViewPager:1.0.2'
+    implementation 'com.github.DNights:CircularViewPager:1.0.3'
 }
+```
+
+set activity_main.xml
+```
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+   <dev.dnights.circularviewpager.lib.CircularViewPager
+       android:id="@+id/mainViewPager"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       app:pageCount="0"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+set MainActivity.kt
+```
+private fun initMainViewPager() {
+        mainViewPager.setLayoutPagerAdapter(object : CircularViewPager.GetLayoutItemListener {
+
+            override fun setItemView(rootView: View, position: Int) {
+                if (listPhoto.isNotEmpty()) {
+                    rootView.textView_id.text = listPhoto[position].id
+
+                    Glide
+                        .with(rootView)
+                        .load(listPhoto[position].urls.thumb)
+                        .into(rootView.imageView_thumb)
+                }
+            }
+
+            override fun getLayout(position: Int): Int {
+                return R.layout.item_imageview
+            }
+        })
+    }
 ```
 
 
