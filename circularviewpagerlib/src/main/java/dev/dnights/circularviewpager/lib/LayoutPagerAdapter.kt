@@ -21,6 +21,10 @@ abstract class LayoutPagerAdapter(count: Int) : PagerAdapter() {
         return view == any
     }
 
+    override fun getItemPosition(`object`: Any): Int {
+        return POSITION_NONE
+    }
+
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val viewPosition = when (position) {
             mPageList.size - 1 -> 0
