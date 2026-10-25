@@ -6,9 +6,9 @@
 **KO** 끝에서 처음으로, 처음에서 끝으로 계속 넘길 수 있는 순환(Circular) ViewPager 안드로이드 라이브러리입니다.
 **EN** An Android library that lets a ViewPager scroll endlessly, wrapping from the last page to the first and back.
 
-<!-- TODO: 데모 GIF 추가 / add demo GIF
-![demo](docs/demo.gif)
--->
+<p align="center"><a href="https://dnight.tistory.com/category/Android"><img src="docs/demo.gif" width="260" alt="CircularViewPager demo"></a></p>
+
+<p align="center"><b>KO</b> 5번째 페이지에서 1번째로, 1번째에서 5번째로 이어서 넘어갑니다. · <b>EN</b> Page 5 wraps to page 1 and back.</p>
 
 📖 **Blog / 블로그** · [DN_Developer – Android 글 모음 / Android posts](https://dnight.tistory.com/category/Android)
 <!-- TODO: 이 라이브러리를 설명하는 글을 발행하면 위 줄을 아래처럼 글 링크로 교체하세요.
